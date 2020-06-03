@@ -2,6 +2,7 @@ import React from "react";
 import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import Header from "../Header";
+import PizzaCard from "../PizzaCard";
 
 import { theme } from "./theme";
 
@@ -10,6 +11,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header shoppingCartCount={3} />
+      <PizzaCard name="Reine" />
     </ThemeProvider>
   );
 }
