@@ -11,18 +11,20 @@ const useStyles = makeStyles({
   },
 });
 
-export default function PizzaCard({ name, ingredients, price }) {
+export default function PizzaCard({ name, ingredients, price, imageUrl }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
-      <CardMedia
-        component="img"
-        alt={name}
-        height="140"
-        image={`https://picsum.photos/${imageSize * 2}.jpg`}
-        title="Pizza "
-      />
+      {imageUrl && (
+        <CardMedia
+          component="img"
+          alt={name}
+          height="140"
+          image={imageUrl}
+          title="Pizza "
+        />
+      )}
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
           {name}
@@ -42,4 +44,9 @@ PizzaCard.propTypes = {
   name: string.isRequired,
   ingredients: arrayOf(string).isRequired,
   price: number.isRequired,
+  imageUrl: string,
+};
+
+PizzaCard.defaultProps = {
+  imageUrl: null,
 };
