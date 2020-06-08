@@ -3,10 +3,9 @@ import PizzaCard from "../PizzaCard";
 import { arrayOf, shape } from "prop-types";
 import { Typography } from "@material-ui/core";
 import { isNilOrEmpty } from "ramda-adjunct";
+import Grid from "@material-ui/core/Grid";
 
 export default function PizzaList({ data }) {
-  //const imageSize = 175;
-
   if (isNilOrEmpty(data))
     return (
       <Typography variant="body1" component="p">
@@ -16,17 +15,18 @@ export default function PizzaList({ data }) {
 
   // preciser l'id seulement dans la boucle.. pas dans PizzaCard
   return (
-    <>
+    <Grid container justify="center" justify="space-between">
       {data.map(({ id, name, ingredients, imageUrl, price }) => (
-        <PizzaCard
-          key={id}
-          name={name}
-          ingredients={ingredients}
-          imageUrl={imageUrl}
-          price={price}
-        />
+        <Grid key={id} item xs={6}>
+          <PizzaCard
+            name={name}
+            ingredients={ingredients}
+            imageUrl={imageUrl}
+            price={price}
+          />
+        </Grid>
       ))}
-    </>
+    </Grid>
   );
 }
 
