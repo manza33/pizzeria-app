@@ -4,7 +4,6 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  //Button,
   IconButton,
   Badge,
 } from "@material-ui/core";
@@ -22,7 +21,7 @@ export default function Header({ shoppingCartCount }) {
   const classes = useStyles();
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
           Pizza à Nico
