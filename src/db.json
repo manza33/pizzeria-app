@@ -1,0 +1,37 @@
+{
+  "pizzas": [
+    {
+      "id": 1,
+      "name": "Reine",
+      "ingredients": ["Sauce tomates", "Champignons", "olives"],
+      "imageUrl": "https://picsum.photos/350.jpg",
+      "price": 8.99
+    },
+    {
+      "id": 2,
+      "name": "Savoyarde",
+      "ingredients": [
+        "Crème fraiche",
+        "Champignons",
+        "pommes de terre",
+        "raclette",
+        "jambon"
+      ],
+      "imageUrl": "https://picsum.photos/350.jpg",
+      "price": 8.99
+    },
+    {
+      "id": 3,
+      "name": "Volcano",
+      "ingredients": [
+        "Sauce tomates",
+        "poivrons",
+        "piments",
+        "merguez",
+        "olives"
+      ],
+      "imageUrl": "https://picsum.photos/350.jpg",
+      "price": 8.99
+    }
+  ]
+}

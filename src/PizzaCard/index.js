@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Price from "../Price";
 
-const imageSize = 175;
+//const imageSize = 175;
 
 const useStyles = makeStyles({
   root: {
@@ -43,6 +43,7 @@ export default function PizzaCard({ name, ingredients, price, imageUrl }) {
 }
 
 PizzaCard.propTypes = {
+  id: number,
   name: string.isRequired,
   ingredients: arrayOf(string).isRequired,
   price: number.isRequired,
