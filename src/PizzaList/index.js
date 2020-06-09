@@ -1,9 +1,9 @@
-import React from "react";
-import PizzaCard from "../PizzaCard";
 import { arrayOf, shape, func } from "prop-types";
-import { Typography } from "@material-ui/core";
 import { isNilOrEmpty } from "ramda-adjunct";
+import { Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
+import PizzaCard from "../PizzaCard";
+import React from "react";
 
 export default function PizzaList({ data, addToCart }) {
   if (isNilOrEmpty(data))

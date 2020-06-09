@@ -19,7 +19,7 @@ export default function App() {
 
   const { status, data, error } = useQuery("pizzas", fetchPizzas);
   const [popinCartOpen, setPopinCartOpen] = React.useState(false);
-  const [cart, { push }] = useList([]); // ['Reine', 'Savoyarde']
+  const [cart, { push, reset }] = useList([]); // ['Reine', 'Savoyarde']
 
   const DisplayPopinCart = () => {
     setPopinCartOpen(true);
@@ -38,7 +38,12 @@ export default function App() {
       />
       {status === "loading" && <CircularProgress />}
       {status === "success" && <PizzaList data={data} addToCart={push} />}
-      <PopinCart open={popinCartOpen} hidePopinCart={hidePopinCart} />
+      <PopinCart
+        open={popinCartOpen}
+        hidePopinCart={hidePopinCart}
+        reset={reset}
+        cart={cart}
+      />
     </ThemeProvider>
   );
 }
