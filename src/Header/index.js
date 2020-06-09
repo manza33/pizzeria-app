@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { number } from "prop-types";
+import { func, number } from "prop-types";
 
 const useStyles = makeStyles({
   title: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Header({ shoppingCartCount }) {
+export default function Header({ shoppingCartCount, DisplayPopinCart }) {
   const classes = useStyles();
 
   return (
@@ -26,7 +26,11 @@ export default function Header({ shoppingCartCount }) {
         <Typography variant="h6" className={classes.title}>
           Pizza à Nico
         </Typography>
-        <IconButton aria-label={`${shoppingCartCount} pizzas`} color="inherit">
+        <IconButton
+          aria-label={`${shoppingCartCount} pizzas`}
+          color="inherit"
+          onClick={DisplayPopinCart}
+        >
           <Badge badgeContent={shoppingCartCount} color="secondary">
             <ShoppingCartIcon />
           </Badge>
@@ -36,9 +40,12 @@ export default function Header({ shoppingCartCount }) {
   );
 }
 
-Header.defaultProps = {
-  shoppingCartCount: 0,
-};
 Header.propTypes = {
   shoppingCartCount: number,
+  DisplayPopinCart: func,
+};
+
+Header.defaultProps = {
+  shoppingCartCount: 0,
+  DisplayPopinCart: Function.prototype,
 };

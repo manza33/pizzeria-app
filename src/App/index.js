@@ -10,7 +10,6 @@ import PopinCart from "../PopinCart";
 const fetchPizzas = () => {
   const baseUrlApi =
     process.env.REACT_APP_BASE_URL_API || "http://localhost:3001";
-  //const baseUrlApi = "https://my-json-server.typicode.com/manza33/pizzeria-app";
   return fetch(`${baseUrlApi}/pizzas`).then((response) => response.json());
 };
 
@@ -20,13 +19,21 @@ export default function App() {
   const { status, data, error } = useQuery("pizzas", fetchPizzas);
   const [popinCartOpen, setPopinCartOpen] = React.useState(false);
 
+  const DisplayPopinCart = () => {
+    setPopinCartOpen(true);
+  };
+
+  const hidePopinCart = () => {
+    setPopinCartOpen(false);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header shoppingCartCount={3} />
+      <Header shoppingCartCount={3} DisplayPopinCart={DisplayPopinCart} />
       {status === "loading" && <CircularProgress />}
       {status === "success" && <PizzaList data={data} />}
-      <PopinCart open={popinCartOpen} />
+      <PopinCart open={popinCartOpen} hidePopinCart={hidePopinCart} />
     </ThemeProvider>
   );
 }

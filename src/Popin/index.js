@@ -9,11 +9,11 @@ import {
 } from "@material-ui/core";
 import { bool, node, string, arrayOf, func } from "prop-types";
 
-export default function Popin({ open, title, children, actions }) {
+export default function Popin({ open, title, children, actions, onClose }) {
   return (
     <Dialog
       open={open}
-      //onClose={handleClose}
+      onClose={onClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
@@ -28,7 +28,6 @@ export default function Popin({ open, title, children, actions }) {
           <Button
             key={label}
             color={primary ? "primary" : "secondary"}
-            //autofocus={primary}
             onClick={onClick}
           >
             {label}
@@ -47,6 +46,7 @@ Popin.propType = {
     label: string,
     onClick: func,
   }),
+  onClose: func,
 };
 
 Popin.defaultProps = {
@@ -54,4 +54,5 @@ Popin.defaultProps = {
   title: null,
   description: node.isRequired,
   actions: [],
+  onClose: Function.prototype,
 };
