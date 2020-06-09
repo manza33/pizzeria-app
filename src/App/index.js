@@ -7,8 +7,12 @@ import { useQuery } from "react-query";
 
 import { theme } from "./theme";
 
-const fetchPizzas = () =>
-  fetch("http://localhost:3001/pizzas").then((response) => response.json());
+const fetchPizzas = () => {
+  const baseUrlApi =
+    process.env.REACT_APP_BASE_URL_API || "http://localhost:3001";
+  //const baseUrlApi = "https://my-json-server.typicode.com/manza33/pizzeria-app";
+  return fetch(`${baseUrlApi}/pizzas`).then((response) => response.json());
+};
 
 export default function App() {
   // state (useState): utilisé seulement à l'intérieur du composant
