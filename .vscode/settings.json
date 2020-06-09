@@ -1,0 +1,11 @@
+{
+  "workbench.editorAssociations": [
+    {
+      "viewType": "",
+      "filenamePattern": ""
+    }
+  ],
+  "workbench.colorCustomizations": {
+    "editor.fontLigatures": true
+  }
+}
