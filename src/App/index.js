@@ -6,6 +6,7 @@ import PizzaList from "../PizzaList";
 import { useQuery } from "react-query";
 import { theme } from "./theme";
 import PopinCart from "../PopinCart";
+import { useList } from "react-use";
 
 const fetchPizzas = () => {
   const baseUrlApi =
@@ -18,6 +19,7 @@ export default function App() {
 
   const { status, data, error } = useQuery("pizzas", fetchPizzas);
   const [popinCartOpen, setPopinCartOpen] = React.useState(false);
+  const [cart, { push }] = useList([]); // ['Reine', 'Savoyarde']
 
   const DisplayPopinCart = () => {
     setPopinCartOpen(true);
@@ -30,9 +32,12 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header shoppingCartCount={3} DisplayPopinCart={DisplayPopinCart} />
+      <Header
+        shoppingCartCount={cart.length}
+        DisplayPopinCart={DisplayPopinCart}
+      />
       {status === "loading" && <CircularProgress />}
-      {status === "success" && <PizzaList data={data} />}
+      {status === "success" && <PizzaList data={data} addToCart={push} />}
       <PopinCart open={popinCartOpen} hidePopinCart={hidePopinCart} />
     </ThemeProvider>
   );

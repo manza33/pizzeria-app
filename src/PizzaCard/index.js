@@ -1,6 +1,13 @@
 import React from "react";
-import { Typography, CardContent, Card, CardMedia } from "@material-ui/core";
-import { arrayOf, string, number } from "prop-types";
+import {
+  Typography,
+  CardContent,
+  Card,
+  CardMedia,
+  CardActions,
+  Button,
+} from "@material-ui/core";
+import { arrayOf, string, number, func } from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Price from "../Price";
@@ -12,9 +19,18 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: `${theme.spacing(2)}px`,
   },
+  button: {
+    flexGrow: 1,
+  },
 }));
 
-export default function PizzaCard({ name, ingredients, price, imageUrl }) {
+export default function PizzaCard({
+  name,
+  ingredients,
+  price,
+  imageUrl,
+  addToCart,
+}) {
   const classes = useStyles();
 
   return (
@@ -39,11 +55,24 @@ export default function PizzaCard({ name, ingredients, price, imageUrl }) {
           <Price value={price} />
         </Typography>
       </CardContent>
+      <CardActions>
+        <Button
+          className={classes.button}
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            addToCart(name);
+          }}
+        >
+          Ajouter
+        </Button>
+      </CardActions>
     </Card>
   );
 }
 
 PizzaCard.propTypes = {
+  onClick: func,
   id: number,
   name: string.isRequired,
   ingredients: arrayOf(string).isRequired,
@@ -53,4 +82,5 @@ PizzaCard.propTypes = {
 
 PizzaCard.defaultProps = {
   imageUrl: null,
+  onClick: Function.prototype,
 };

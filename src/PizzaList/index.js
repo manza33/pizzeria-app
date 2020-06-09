@@ -1,11 +1,11 @@
 import React from "react";
 import PizzaCard from "../PizzaCard";
-import { arrayOf, shape } from "prop-types";
+import { arrayOf, shape, func } from "prop-types";
 import { Typography } from "@material-ui/core";
 import { isNilOrEmpty } from "ramda-adjunct";
 import Grid from "@material-ui/core/Grid";
 
-export default function PizzaList({ data }) {
+export default function PizzaList({ data, addToCart }) {
   if (isNilOrEmpty(data))
     return (
       <Typography variant="body1" component="p">
@@ -23,6 +23,7 @@ export default function PizzaList({ data }) {
             ingredients={ingredients}
             imageUrl={imageUrl}
             price={price}
+            addToCart={addToCart}
           />
         </Grid>
       ))}
@@ -32,8 +33,10 @@ export default function PizzaList({ data }) {
 
 PizzaList.protypes = {
   data: arrayOf(shape(PizzaCard.propTypes)),
+  addToCart: func,
 };
 
 PizzaList.defaultProps = {
   data: [],
+  addToCart: Function.prototype,
 };
