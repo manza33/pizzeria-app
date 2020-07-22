@@ -1,12 +1,12 @@
-import React from "react";
 import { CssBaseline, CircularProgress } from "@material-ui/core";
+import { theme } from "./theme";
 import { ThemeProvider } from "@material-ui/core/styles";
+import { useList } from "react-use";
+import { useQuery } from "react-query";
 import Header from "../Header";
 import PizzaList from "../PizzaList";
-import { useQuery } from "react-query";
-import { theme } from "./theme";
 import PopinCart from "../PopinCart";
-import { useList } from "react-use";
+import React from "react";
 
 const fetchPizzas = () => {
   const baseUrlApi =
