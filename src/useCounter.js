@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function useCounter(defaultCount, min = 0, max) {
-  const [pizzaCount, setPizzaCount] = React.useState(defaultCount);
-  const decrement = () => setPizzaCount(Math.max(min, pizzaCount - 1));
-  const increment = () => setPizzaCount(Math.min(pizzaCount + 1, max));
+export default function useCounter(defaultCounter, min = 0, max) {
+  const [counter, setCounter] = React.useState(defaultCounter);
+  const decrement = () => setCounter(Math.max(min, counter - 1));
+  const increment = () => setCounter(Math.min(counter + 1, max));
 
-  return [pizzaCount, { decrement, increment }];
+  return [counter, { decrement, increment }];
 }
