@@ -14,7 +14,7 @@ import { AddBox, IndeterminateCheckBox } from "@material-ui/icons";
 
 import Price from "../Price";
 import { PIZZAS_MAX_COUNT, PIZZAS_MIN_COUNT } from "../pizzas";
-import useCounter from "../useCounter";
+import { useCounter } from "react-use";
 
 //const imageSize = 175;
 
@@ -37,11 +37,7 @@ export default function PizzaCard({
 }) {
   const classes = useStyles();
 
-  const [pizzaCount, { decrement, increment }] = useCounter(
-    1,
-    1,
-    PIZZAS_MAX_COUNT
-  );
+  const [pizzaCount, { dec, inc }] = useCounter(1, PIZZAS_MAX_COUNT, 1);
 
   return (
     <Card className={classes.root}>
@@ -64,11 +60,11 @@ export default function PizzaCard({
         <Typography variant="h4" component="p">
           <Price value={price} />
         </Typography>
-        <IconButton aria-label="moins" onClick={decrement}>
+        <IconButton aria-label="moins" onClick={() => dec()}>
           <IndeterminateCheckBox fontSize="inherit" />
         </IconButton>
         <span>{pizzaCount}</span>
-        <IconButton aria-label="plus" onClick={increment}>
+        <IconButton aria-label="plus" onClick={() => inc()}>
           <AddBox fontSize="inherit" />
         </IconButton>
       </CardContent>
