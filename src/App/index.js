@@ -17,7 +17,7 @@ const fetchPizzas = () => {
 export default function App() {
   // state (useState): utilisé seulement à l'intérieur du composant
 
-  const { status, data, error } = useQuery("pizzas", fetchPizzas);
+  const { status, data } = useQuery("pizzas", fetchPizzas);
   const [popinCartOpen, setPopinCartOpen] = React.useState(false);
   const [cart, { push, reset }] = useList([]); // ['Reine', 'Savoyarde']
 

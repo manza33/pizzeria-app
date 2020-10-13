@@ -6,12 +6,15 @@ import {
   CardMedia,
   CardActions,
   Button,
+  IconButton,
 } from "@material-ui/core";
 import { arrayOf, string, number, func } from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
+import { AddBox, IndeterminateCheckBox } from "@material-ui/icons";
 
 import Price from "../Price";
 import { theme } from "../App/theme";
+import { PIZZAS_MAX_COUNT, PIZZAS_MIN_COUNT } from "../pizzas";
 
 //const imageSize = 175;
 
@@ -34,6 +37,12 @@ export default function PizzaCard({
 }) {
   const classes = useStyles();
 
+  const [pizzaCount, setPizzaCount] = React.useState(1);
+  const decrement = () =>
+    setPizzaCount(Math.max(PIZZAS_MIN_COUNT, pizzaCount - 1));
+  const increment = () =>
+    setPizzaCount(Math.min(pizzaCount + 1, PIZZAS_MAX_COUNT));
+
   return (
     <Card className={classes.root}>
       {imageUrl && (
@@ -55,6 +64,13 @@ export default function PizzaCard({
         <Typography variant="h4" component="p">
           <Price value={price} />
         </Typography>
+        <IconButton aria-label="moins" onClick={decrement}>
+          <IndeterminateCheckBox fontSize="inherit" />
+        </IconButton>
+        <span>{pizzaCount}</span>
+        <IconButton aria-label="plus" onClick={increment}>
+          <AddBox fontSize="inherit" />
+        </IconButton>
       </CardContent>
       <CardActions>
         <Button
