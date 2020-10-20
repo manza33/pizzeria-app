@@ -1,31 +1,22 @@
 import React from "react";
 
 import Screen from "../Screen";
-import PopinCart from "../PopinCart";
+import Cart from "../Cart";
 import { useList } from "react-use";
 
-// const [popinCartOpen, setPopinCartOpen] = React.useState(false);
-// const [cart, { push, reset }] = useList([]); // ['Reine', 'Savoyarde']
-
-// const DisplayPopinCart = () => {
-//   setPopinCartOpen(true);
-// };
-
-// const hidePopinCart = () => {
-//   setPopinCartOpen(false);
-// };
-
 export default function CartScreen() {
-  const [cart] = useList([]);
+  const [cart] = useList([
+    { id: 1, name: "Pizza", price: 10.99, addedDate: Date.now() },
+    { id: 1, name: "Pizza", price: 10.99, addedDate: Date.now() },
+    { id: 1, name: "Pizza", price: 10.99, addedDate: Date.now() },
+    { id: 1, name: "Pizza", price: 10.99, addedDate: Date.now() },
+    { id: 1, name: "Pizza", price: 10.99, addedDate: Date.now() },
+    { id: 1, name: "Pizza", price: 10.99, addedDate: Date.now() },
+  ]);
+
   return (
     <Screen>
-      <PopinCart
-      //cart={[]}
-      // open={popinCartOpen}
-      // hidePopinCart={hidePopinCart}
-      // reset={reset}
-      // cart={cart}
-      />
+      <Cart cart={cart} />
     </Screen>
   );
 }

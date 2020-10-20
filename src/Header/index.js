@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import useStyles from "./styles";
 import routes from "../App/routes";
 
-export default function Header({ shoppingCartCount, DisplayPopinCart }) {
+export default function Header({ shoppingCartCount }) {
   const classes = useStyles();
 
   return (
@@ -30,7 +30,6 @@ export default function Header({ shoppingCartCount, DisplayPopinCart }) {
         <IconButton
           aria-label={`${shoppingCartCount} pizzas`}
           color="inherit"
-          onClick={DisplayPopinCart}
           component={Link}
           to={routes.cart.path}
         >
@@ -45,10 +44,8 @@ export default function Header({ shoppingCartCount, DisplayPopinCart }) {
 
 Header.propTypes = {
   shoppingCartCount: number,
-  DisplayPopinCart: func,
 };
 
 Header.defaultProps = {
   shoppingCartCount: 0,
-  DisplayPopinCart: Function.prototype,
 };
