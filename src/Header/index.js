@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  makeStyles,
   AppBar,
   Toolbar,
   Typography,
@@ -10,12 +9,8 @@ import {
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { func, number } from "prop-types";
-
-const useStyles = makeStyles({
-  title: {
-    flexGrow: 1,
-  },
-});
+import { Link } from "react-router-dom";
+import useStyles from "./styles";
 
 export default function Header({ shoppingCartCount, DisplayPopinCart }) {
   const classes = useStyles();
@@ -23,13 +18,20 @@ export default function Header({ shoppingCartCount, DisplayPopinCart }) {
   return (
     <AppBar position="sticky">
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
+        <Typography
+          variant="h6"
+          className={classes.title}
+          component={Link}
+          to="/"
+        >
           Pizza à Nico
         </Typography>
         <IconButton
           aria-label={`${shoppingCartCount} pizzas`}
           color="inherit"
           onClick={DisplayPopinCart}
+          component={Link}
+          to="/Cart"
         >
           <Badge badgeContent={shoppingCartCount} color="secondary">
             <ShoppingCartIcon />
