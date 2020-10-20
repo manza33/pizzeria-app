@@ -11,6 +11,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { func, number } from "prop-types";
 import { Link } from "react-router-dom";
 import useStyles from "./styles";
+import routes from "../App/routes";
 
 export default function Header({ shoppingCartCount, DisplayPopinCart }) {
   const classes = useStyles();
@@ -22,7 +23,7 @@ export default function Header({ shoppingCartCount, DisplayPopinCart }) {
           variant="h6"
           className={classes.title}
           component={Link}
-          to="/"
+          to={routes.home.path}
         >
           Pizza à Nico
         </Typography>
@@ -31,7 +32,7 @@ export default function Header({ shoppingCartCount, DisplayPopinCart }) {
           color="inherit"
           onClick={DisplayPopinCart}
           component={Link}
-          to="/Cart"
+          to={routes.cart.path}
         >
           <Badge badgeContent={shoppingCartCount} color="secondary">
             <ShoppingCartIcon />
