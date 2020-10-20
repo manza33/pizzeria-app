@@ -39,6 +39,13 @@ export default function PizzaCard({
 
   const [pizzaCount, { dec, inc }] = useCounter(1, PIZZAS_MAX_COUNT, 1);
 
+  const addedPizzas = Array.from(new Array(pizzaCount), () => ({
+    id,
+    name,
+    price,
+    addedAt: Date.now(),
+  }));
+
   return (
     <Card className={classes.root}>
       {imageUrl && (
@@ -74,7 +81,7 @@ export default function PizzaCard({
           variant="contained"
           color="primary"
           onClick={() => {
-            addToCart({ id, name, price, addedAt: Date.now() });
+            addToCart(...addedPizzas);
           }}
         >
           Ajouter

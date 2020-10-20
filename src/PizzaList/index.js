@@ -16,15 +16,9 @@ export default function PizzaList({ data, addToCart }) {
   // preciser l'id seulement dans la boucle.. pas dans PizzaCard
   return (
     <Grid container justify="center" justify="space-between">
-      {data.map(({ id, name, ingredients, imageUrl, price }) => (
-        <Grid key={id} item xs={6}>
-          <PizzaCard
-            name={name}
-            ingredients={ingredients}
-            imageUrl={imageUrl}
-            price={price}
-            addToCart={addToCart}
-          />
+      {data.map((pizza) => (
+        <Grid key={pizza.id} item xs={6}>
+          <PizzaCard {...pizza} addToCart={addToCart} />
         </Grid>
       ))}
     </Grid>
