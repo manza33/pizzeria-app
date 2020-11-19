@@ -1,36 +1,6 @@
-import { arrayOf, shape, func } from "prop-types";
-import { isNilOrEmpty } from "ramda-adjunct";
-import { Typography } from "@material-ui/core";
-import Grid from "@material-ui/core/Grid";
-import PizzaCard from "../PizzaCard";
-import React from "react";
+import { connect } from "react-redux";
+import PizzaList from "./component";
 
-export default function PizzaList({ data, addToCart }) {
-  if (isNilOrEmpty(data))
-    return (
-      <Typography variant="body1" component="p">
-        Pas de Pizza en ce moment...
-      </Typography>
-    );
+const mapStateToProps = (state) => ({ pizzas: state.pizzas });
 
-  // preciser l'id seulement dans la boucle.. pas dans PizzaCard
-  return (
-    <Grid container justify="center" justify="space-between">
-      {data.map((pizza) => (
-        <Grid key={pizza.id} item xs={6}>
-          <PizzaCard {...pizza} addToCart={addToCart} />
-        </Grid>
-      ))}
-    </Grid>
-  );
-}
-
-PizzaList.protypes = {
-  data: arrayOf(shape(PizzaCard.propTypes)),
-  addToCart: func,
-};
-
-PizzaList.defaultProps = {
-  data: [],
-  addToCart: Function.prototype,
-};
+export default connect(mapStateToProps)(PizzaList);

@@ -1,4 +1,4 @@
-import PizzaListScreen from "../PizzaListScreen";
+import PizzaListScreen from "../PizzaListScreen/component";
 import CartScreen from "../CartScreen";
 
 export default {
